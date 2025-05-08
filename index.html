@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Removedor de Comentário em Código</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <h1>Removedor de Comentário em Código</h1>
+
+        <div class="controls">
+            <div class="left-controls">
+                <label for="language-select">Escolha a Linguagem:</label>
+                <select id="language-select">
+                </select>
+            </div>
+            <button id="process-button">Remover comentários</button>
+        </div>
+
+        <div class="process-info" id="process-info-area">
+        
+        </div>
+
+        <div class="terminal-container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="window-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span>ENTRADA DE CÓDIGO</span>
+                </div>
+                <textarea id="code-input" spellcheck="false" placeholder="Cole seu código aqui..."></textarea>
+            </div>
+
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="window-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span>CÓDIGO SEM COMENTÁRIOS</span>
+                </div>
+                <textarea id="code-output" spellcheck="false" readonly placeholder="O código processado aparecerá aqui..."></textarea>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 - Rilson Joás</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

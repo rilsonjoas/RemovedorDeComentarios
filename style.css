@@ -1,0 +1,269 @@
+:root {
+    --dark-bg: #282c34; /* Fundo geral escuro */
+    --container-bg: #353a40; /* Fundo do painel principal */
+    --input-bg: #2c313a; /* Fundo de textareas, selects, header do terminal */
+    --text-color: #abb2bf; /* Cor principal do texto (cinza claro) */
+    --text-color-light: #dfe2e7; /* Um branco mais suave para títulos */
+    --accent-color: #2976b6; /* Azul claro para destaque */
+    --button-hover-bg: #7bc6f8; /* Hover do botão de destaque */
+    --border-color: #21252b; /* Cor de borda sutil */
+
+    --terminal-dots-red: #ff5f57;
+    --terminal-dots-yellow: #febc2e;
+    --terminal-dots-green: #28c840;
+
+    --font-primary: 'Roboto', sans-serif;
+    --font-code: 'Fira Code', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; /* Espaçamento para o main não colar nas bordas */
+}
+
+main {
+    background-color: var(--container-bg);
+    padding: 35px 30px;
+    border-radius: 10px;
+    max-width: 950px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    color: var(--text-color-light);
+    font-family: var(--font-primary);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Para melhor responsividade */
+}
+
+.controls .left-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1; /* Permite que o select ocupe espaço */
+}
+
+.controls label {
+    font-weight: 400;
+    color: var(--text-color);
+    font-size: 0.95em;
+}
+
+.controls select,
+.controls button {
+    padding: 10px 18px;
+    font-family: var(--font-primary);
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.controls select {
+    min-width: 220px;
+    appearance: none; /* Remove estilo padrão do select */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23abb2bf' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 35px; /* Espaço para a seta */
+}
+
+
+.controls select:focus,
+.controls button:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+.controls button { /* Botão "Processar Código" */
+    background-color: var(--accent-color);
+    color: #fff;
+    font-weight: 500;
+    border-color: var(--accent-color);
+}
+
+.controls button:hover {
+    background-color: var(--button-hover-bg);
+    border-color: var(--button-hover-bg);
+}
+
+.terminal-container {
+    display: flex;
+    gap: 20px;
+    min-height: 300px; /* Altura mínima para as textareas */
+}
+
+.terminal-window {
+    flex: 1;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.terminal-header {
+    background-color: var(--input-bg); /* Pode ser um pouco diferente se quiser mais contraste */
+    padding: 9px 15px;
+    font-family: var(--font-code);
+    font-size: 0.8em;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    user-select: none; /* Impede seleção do texto do header */
+}
+
+.terminal-header .window-dots {
+    display: flex;
+    gap: 7px;
+    margin-right: 12px;
+}
+
+.terminal-header .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.dot.red { background-color: var(--terminal-dots-red); }
+.dot.yellow { background-color: var(--terminal-dots-yellow); }
+.dot.green { background-color: var(--terminal-dots-green); }
+
+.terminal-header span {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+textarea {
+    flex-grow: 1;
+    width: 100%;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 15px;
+    font-family: var(--font-code);
+    font-size: 0.9em;
+    line-height: 1.5;
+    resize: none;
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: auto;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+textarea::placeholder {
+    color: #6c757d;
+}
+
+footer {
+    text-align: center;
+    padding-top: 25px;
+    font-size: 0.85em;
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+.process-info {
+    background-color: var(--input-bg); /* Mesmo fundo dos inputs/terminais */
+    color: var(--text-color);
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px; /* Espaçamento antes dos terminais */
+    font-size: 0.85em;
+    font-family: var(--font-code); /* Para manter a sensação de "log" */
+    border: 1px solid var(--border-color);
+    min-height: 1.5em; /* Para não colapsar quando vazio */
+    line-height: 1.4;
+    opacity: 0; /* Começa invisível, aparecerá com JS */
+    transition: opacity 0.3s ease-in-out;
+    text-align: left; /* Alinhamento padrão */
+}
+
+.process-info.visible {
+    opacity: 1;
+}
+
+.process-info.error {
+    color: var(--terminal-dots-red); /* Usa a cor vermelha dos "dots" para erro */
+    border-left: 3px solid var(--terminal-dots-red);
+}
+
+.process-info.success {
+    color: var(--text-color); /* Cor normal para sucesso */
+    border-left: 3px solid var(--terminal-dots-green); /* Usa a cor verde para sucesso */
+}
+
+@media (max-width: 800px) {
+    .terminal-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .terminal-window {
+        min-height: 250px;
+    }
+    .controls {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+        align-items: flex-start; 
+    }
+    main {
+        padding: 25px 20px;
+    }
+    h1 {
+        font-size: 1.7em;
+        margin-bottom: 25px;
+    }
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .controls .left-controls {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 15px;
+        gap: 8px;
+    }
+    .controls select {
+        min-width: auto;
+    }
+}
