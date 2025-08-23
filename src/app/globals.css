@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=Ubuntu+Condensed&family=Ubuntu+Mono:wght@400;700&display=swap');
+
+body {
+  @apply bg-dark-bg text-text-color;
+  font-family: 'Ubuntu', 'Ubuntu Condensed', 'Ubuntu Mono', sans-serif;
+}
+
+.font-primary {
+  font-family: 'Ubuntu', 'Ubuntu Condensed', 'Ubuntu Mono', sans-serif;
+}
+
+.font-condensed {
+  font-family: 'Ubuntu Condensed', 'Ubuntu', 'Ubuntu Mono', sans-serif;
+}
+
+.font-mono {
+  font-family: 'Ubuntu Mono', 'Ubuntu', 'Ubuntu Condensed', monospace;
+}
